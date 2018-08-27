@@ -1,0 +1,30 @@
+* useful commands
+** check running kernel
+   - /uname -a/
+   - /cat \/proc\/version_signature/
+   - /lsb_release -a/
+** change the default booting kernel in the grub menu
+   1. open file '/etc/default/grub'
+   2. change variable 'GRUB_DEFAULT' to the index of the kernel you want. ("x>y" for index x and y-th submenu).
+   3. save and exit.
+   4. run command /update-grub/
+   The correct index can be figured out in file '/boot/grub/grub.cfg'. The name of the 'menuentry' can also been used directly as 'GRUB_DEFAULT' value.
+** upgrade ubuntu without updating the kernel
+   1. apt-mark hold linux-image-generic linux-headers-generic
+   2. apt-get update
+   3. apt-get update -y
+   4. apt-mark unhold linux-image-generic linux-headers-generic
+** stop updating the kernel
+   /apt-mark unhold package-name/ will stop updating package-name.
+   To hold kernel updating, the following packages need to be held:
+   - linux-generic
+   - linux-image-generic
+   - linux-headers-generic
+   - linux-image-X.Y.Z-W-generic
+   - linux-image-extra-X.Y.Z-W-generic
+   - linux-headers-X.Y.Z-W-generic
+** revert to a previous kernel
+   1. Booting from previous kernel
+   2. Remove the unused kernel
+      - /apt-get purge linux-image-version-generic/
+      - /apt-get purge linux-headers-version-generic/
