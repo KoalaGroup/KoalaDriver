@@ -28,3 +28,20 @@
    2. Remove the unused kernel
       - /apt-get purge linux-image-version-generic/
       - /apt-get purge linux-headers-version-generic/
+** install a specific mainline kernel
+   The mainline kernels are stored [[http://kernel.ubuntu.com/~kernel-ppa/mainline/][here]].
+   To install manually:
+   1. download three files:
+      - linux-headers-4.13.0-xxxx_all.deb
+      - linux-headers-4.13.0-xxxx-generic_xxx_amd64.deb
+      - linux-image-4.13.0-xxxx-generic_xxx_amd64.deb
+   2. install these files: /dpkg -i */.deb/
+   3. reboot
+
+   There also exits a GUI ierface for this process: Ubuntu Kernel Update Utility ([[https://github.com/teejee2008/ukuu][Ukuu)]].
+   1. add the ppa repository:
+      - /add-apt-repository ppa:teejee2008/ppa/
+      - /apt-get update/
+   2. install ukuu: /apt-get install ukuu/
+   3. run /ukuu-gtk/
+   
